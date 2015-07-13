@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:jsf="http://xmlns.jcp.org/jsf"
+       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:bs="http://xmlns.jcp.org/jsf/composite/bootstrap"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <body>
+        <ui:composition template="/WEB-INF/templates/layout.xhtml">
+            <ui:define name="title">ログイン</ui:define>
+            <ui:define name="contents">
+                    <h1>ログイン</h1>
+                    <div>
+                        <h:message id="error" for="error" class="alert alert-danger"/>
+                    </div>
+                    <form class="form" jsf:id="form" >
+                        <bs:input fgid="idFg" name="id" label="ID">
+                            <input type="text" jsf:id="id" jsf:value="#{loginAction.id}"
+                                   class="form-control" placeholder="user1" >
+                                <f:ajax execute="id" render="idFg" event="blur"/>
+                            </input>
+                        </bs:input>
+                        <bs:input fgid="passwordFg" name="password" label="password">
+                            <input type="password" jsf:id="password" jsf:value="#{loginAction.password}"
+                                   class="form-control" placeholder="user1"/>
+                        </bs:input>
+
+                        <h:commandButton class="btn btn-primary" action="#{loginAction.login}" value="ログイン" />
+                    </form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

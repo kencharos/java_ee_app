@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:jsf="http://xmlns.jcp.org/jsf"
+       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:bs="http://xmlns.jcp.org/jsf/composite/bootstrap"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <body>
+        <ui:composition template="/WEB-INF/templates/layout.xhtml">
+            <ui:define name="title">製品検索</ui:define>
+            <ui:define name="contents">
+                    <h1>製品検索</h1>
+                    <div>
+                        <h:message id="error" for="error" class="alert alert-danger"/>
+                    </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
