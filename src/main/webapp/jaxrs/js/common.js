@@ -39,6 +39,5 @@ Vue.component('app-footer', AppFooter);
 
 function logout(){
     delete sessionStorage.user;
-    delete sessionStorage.token;
     location.href ="rest/logout";
 }

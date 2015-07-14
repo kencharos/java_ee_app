@@ -36,7 +36,9 @@ public class LogoutResource {
     public Response logout(){
         
         try {
+            System.out.println(req.getUserPrincipal().getName());
             req.logout();
+            req.getSession(false).invalidate();
             return Response.seeOther(URI.create("../login.html")).build();
         } catch(ServletException e) {
             return Response.seeOther(URI.create("../login.html")).build();

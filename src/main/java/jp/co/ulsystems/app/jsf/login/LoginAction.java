@@ -38,19 +38,20 @@ public class LoginAction {
     
     
     
+    
     public String login() {
         
         try {
             req.login(id, password);
-            
+            req.getSession(true);
             user.setPrincipal(req.getUserPrincipal());
             user.setId(req.getUserPrincipal().getName());
             
-            return "/views/products.xhtml?faces-redirect=true";
+            return "/views/welcome.xhtml?faces-redirect=true";
         } catch (ServletException e) {
             
             if (req.getUserPrincipal() != null) {
-                return "/views/products.xhtml?faces-redirect=true";
+                return "/views/welcome.xhtml?faces-redirect=true";
             }
             
             FacesContext.getCurrentInstance().addMessage("error", 

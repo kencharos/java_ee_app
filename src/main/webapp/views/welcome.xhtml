@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:metadata>
+        <!-- viewActionは初期処理の実行を指定する -->
+        <f:viewAction  action="#{welcomeAction.init}" ></f:viewAction>
+    </f:metadata>>
+    <body>
+        <ui:composition template="/WEB-INF/templates/layout.xhtml">
+            <ui:define name="title">Login Success</ui:define>
+            <ui:define name="contents">
+                <h1>Hello! #{user.id}</h1>
+                <h2>Notifications</h2>
+                <ul>
+                    <li  jsfc="ui:repeat" value="#{welcomeAction.notifications}" var="note">#{note}</li>
+                </ul>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

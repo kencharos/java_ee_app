@@ -11,14 +11,11 @@ public class LoginResponse {
     
     public String next;
     
-    public String token;
-
     public LoginResponse() {
     }
 
-    public LoginResponse(String user, String token, String next) {
+    public LoginResponse(String user, String next) {
         this.user = user;
-        this.token = token;
         this.next = next;
     }
 }

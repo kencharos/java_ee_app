@@ -18,7 +18,6 @@ var vm = new Vue({
                     method:"POST", contentType: 'application/json'}
             ).success(function(data){
                 sessionStorage.setItem("user", data.user);
-                sessionStorage.setItem("token", data.token);
                 location.href = data.next;
                 
             }).fail(function(xhr, status){
@@ -26,11 +25,11 @@ var vm = new Vue({
                     alert(status);
                     return;
                 }
-                var error = xhr.responseJSON
+                var error = xhr.responseJSON;
                 var getMessage = function(key) {
                     var list = error.filter(function(e){return e.key === key;});
                     return list.length > 0 ? list[0].message : null;
-                }
+                };
                 $data.idError = getMessage("id");
                 $data.passwordError = getMessage("password");
                 console.log($data)

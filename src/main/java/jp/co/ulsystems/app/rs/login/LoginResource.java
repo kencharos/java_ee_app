@@ -5,22 +5,16 @@
  */
 package jp.co.ulsystems.app.rs.login;
 
-import java.net.URI;
-import java.util.UUID;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import jp.co.ulsystems.app.rs.ApplicationException;
 
 /**
@@ -46,14 +40,10 @@ public class LoginResource {
     public LoginResponse login(@Valid LoginRequest loginReq) {
       
         try {
+            req.getSession(true);
             req.login(loginReq.id, loginReq.password);
-            return new LoginResponse(req.getUserPrincipal().getName(), 
-                    UUID.randomUUID().toString(), "products.html");
+            return new LoginResponse(req.getUserPrincipal().getName(), "welcome.html");
         } catch(ServletException e) {
-            if(req.getUserPrincipal() != null) {
-                return new LoginResponse(req.getUserPrincipal().getName(),
-                        UUID.randomUUID().toString(),  "products.html");
-            }
             
             throw new ApplicationException("id", "Invalid id or password.");
         }

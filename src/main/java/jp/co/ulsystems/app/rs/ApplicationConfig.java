@@ -26,8 +26,10 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(jp.co.ulsystems.app.rs.ApplicationExceptionMapper.class);
         resources.add(jp.co.ulsystems.app.rs.BeanValidationExceptionMapper.class);
+        resources.add(jp.co.ulsystems.app.rs.auth.AuthenticationFilter.class);
         resources.add(jp.co.ulsystems.app.rs.login.LoginResource.class);
         resources.add(jp.co.ulsystems.app.rs.login.LogoutResource.class);
+        resources.add(jp.co.ulsystems.app.rs.login.WelcomeResource.class);
     }
 
 }
